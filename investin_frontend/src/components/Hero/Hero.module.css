@@ -1,0 +1,79 @@
+.hero{
+    background-color: rgba(241, 245, 249, 0.86);
+    margin: 2.5vw 4vw 4vw 4vw;
+    padding: 5vw 5vw;
+    border-radius: 5vw;
+
+    color: white;
+}
+
+.banner{
+    background-color: rgba(188, 234, 234, 0.777);
+    background-image: linear-gradient(120deg, #f3eef8 0%, #d1b1ef 30%, #44b3e7 100%);;
+    /* margin: 3vw 3vw; */
+    padding: 10vw 7vw;
+    border-radius: 3vw;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+
+    margin: 1vw auto;
+    text-align: center;
+    /* background-color: #8ec5fc; */
+}
+
+.content img{
+    width: 8vw;
+    margin: 0 auto;
+    /* background-color: #8ec5fc; */
+}
+
+.content h2{
+    font-size: 3.5vw;
+    font-weight: 500;
+    margin: 0;
+    margin-top: 1vw;
+    padding: 0 0.5vw;
+    line-height: 4vw;
+}
+
+.content p{
+    font-size: 1.25vw;
+    padding: 0 0.55vw;
+    color: rgb(246, 246, 246);
+}
+
+.cta_buttons{
+    display: flex;
+    gap: 2vw;
+
+    align-items: center;
+    margin: 0 auto;
+}
+
+.cta_buttons div{
+    background-color: white;
+    color: black;
+    padding: 1vw 1.25vw;
+    border-radius: 1.25vw;
+    margin-top: 1vw;
+
+    font-size: 1.2vw;
+    font-weight: 500;
+}
+
+.cta_buttons div:nth-child(2){
+    background-color: rgba(255, 255, 255, 0.258);
+    color: white;
+}
+
+
+.cta_buttons div a{
+    text-decoration: none;
+}
+.cta_buttons div:nth-child(1) a{
+    color: black;
+}

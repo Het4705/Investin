@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Investor</title>
+</head>
+<body>
+    <h1>View Investor</h1>
+    <div>
+        <label for="investorId">Investor ID:</label>
+        <input type="text" id="investorId">
+        <button type="button" onclick="fetchInvestorDetails()">Fetch Details</button>
+    </div>
+    <div id="investorDetails"></div>
+
+    <script>
+        async function fetchInvestorDetails() {
+            const investorId = document.getElementById('investorId').value;
+            try {
+                const response = await fetch(`http://localhost:3000/api/investors/${investorId}`);
+                if (!response.ok) throw new Error('Investor not found');
+                const investor = await response.json();
+
+                // Log URLs to the console for debugging
+                console.log('Logo URL:', investor.logo);
+                investor.images.forEach((url, index) => console.log(`Image ${index + 1} URL:`, url));
+                investor.keyPeople.forEach((person, index) => console.log(`Key Person ${index + 1} Image URL:`, person.image));
+                investor.companiesInvested.forEach((company, index) => {
+                    company.clogo.forEach((url, idx) => console.log(`Company ${index + 1} Logo ${idx + 1} URL:`, url));
+                });
+
+                // Display the investor details
+                const detailsContainer = document.getElementById('investorDetails');
+                detailsContainer.innerHTML = `
+                    <h2>${investor.companyName}</h2>
+                    <p><strong>Company Govt Verified No:</strong> ${investor.companyGovtVerifiedNo}</p>
+                    <p><strong>Contact:</strong> ${investor.contact}</p>
+                    <p><strong>Email:</strong> ${investor.email}</p>
+                    <p><strong>Address:</strong> ${investor.address.city}, ${investor.address.state}, ${investor.address.country}, ${investor.address.pincode}</p>
+                    <p><strong>Likes:</strong> ${investor.likes}</p>
+                    <p><strong>Brief Info:</strong> ${investor.briefInfo}</p>
+                    <h3>Company Logo:</h3>
+                    ${investor.logo ? `<img src="${investor.logo}" alt="Company Logo" width="200">` : 'No logo available'}
+                    <h3>Images:</h3>
+                    ${investor.images.length ? investor.images.map(image => `<img src="${image}" alt="Investor Image" width="200">`).join('') : 'No images available'}
+                    <h3>Key People:</h3>
+                    ${investor.keyPeople.length ? investor.keyPeople.map((person, index) => `
+                        <div>
+                            <p><strong>Name:</strong> ${person.name}</p>
+                            <p><strong>Position:</strong> ${person.position}</p>
+                            <p><strong>Info:</strong> ${person.info}</p>
+                            ${person.image ? `<img src="${person.image}" alt="${person.name}" width="200">` : 'No image available'}
+                        </div>
+                    `).join('') : 'No key people available'}
+                    <h3>Companies Invested:</h3>
+                    ${investor.companiesInvested.length ? investor.companiesInvested.map((company, index) => `
+                        <div>
+                            <p><strong>Company Name:</strong> ${company.cname}</p>
+                            <p><strong>Info:</strong> ${company.info}</p>
+                            <p><strong>Holding Share:</strong> ${company.holdingShare}</p>
+                            ${company.clogo.length ? company.clogo.map((logo, idx) => `<img src="${logo}" alt="${company.cname} Logo" width="200">`).join('') : 'No logos available'}
+                        </div>
+                    `).join('') : 'No companies invested'}
+                `;
+            } catch (error) {
+                alert('Error fetching investor details: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html>
