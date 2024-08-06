@@ -10,8 +10,8 @@ import "./InvestorDetail.css"; // Import the CSS file
 // Register Chart.js components
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
-const InvestorDetail = () => {
-  const { investorId } = useParams();
+const InvestorDetail = ( { investorId }) => {
+ 
   const [investor, setInvestor] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -166,7 +166,7 @@ const InvestorDetail = () => {
       <section className="images-section bg-white shadow-md rounded-lg p-6">
         <h2 className="text-2xl font-semibold mb-4">Images</h2>
         <Carousel
-          className="custom-carousel"
+          className="custom-carousel h-max"
           autoPlay
           infiniteLoop
           showThumbs={false}

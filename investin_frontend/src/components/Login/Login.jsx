@@ -28,9 +28,9 @@ const Login = () => {
       const { username, role, id } = user;
 
       Cookies.set('token', token, { expires: 10 });
-      Cookies.set('username', username);
-      Cookies.set('role', role);
-      Cookies.set('id', id);
+      Cookies.set('username', username,{ expires: 10 });
+      Cookies.set('role', role,{ expires: 10 });
+      Cookies.set('id', id),{ expires: 10 };
 
       toast.success(response.data.message || 'Login successful');
       

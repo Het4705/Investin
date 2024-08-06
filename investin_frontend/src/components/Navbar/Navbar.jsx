@@ -78,7 +78,7 @@ export default function Navbar() {
                 )}
                 {role === "investor" && (
                   <NavLink
-                    to="/companyDashboard"
+                    to="/investorDashboard"
                     className="hover:border-b-2 border-white w-full p-1"
                   >
                     Manage Company

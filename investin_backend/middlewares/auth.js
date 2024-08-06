@@ -29,7 +29,8 @@ const checkAuthentication = (req, res, next) => {
 
 const checkRoleInvestor = (req, res, next) => {
     const token = req.cookies.token;
-    if (!token) {
+    const role = req.cookies.role;
+    if (!token ) {
         return res.status(401).send('Authorization token missing');
     }
 
@@ -40,19 +41,20 @@ const checkRoleInvestor = (req, res, next) => {
                 details: "Login to access the token"
             });
         }
-        if (decoded.role == "investor") {
+        if (role == "investor") {
             next();
         }
         else{
             return res.status(401).json({
-                details: "Only Valid investors are allowed"
+                details: "Only Valid Investors are allowed"
             });
         }
     } catch (err) {
-        console.error('JWT verification error:', err);
+        console.error('JWT verification error:');
         return res.status(401).send('Invalid token');
     }
 }
+
 
 const checkRoleStartup = (req, res, next) => {
     const token = req.cookies.token;

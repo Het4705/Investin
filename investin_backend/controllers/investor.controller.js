@@ -15,9 +15,11 @@ const addInvestor = async (req, res) => {
     const uploadedCLogos = [];
     let CompanyLogo = "";
 
+    
+
     try {
         console.log("Debug: Starting addInvestor function");
-        const admin_id = getUserDetailFromToken(req)
+        const admin_id = req.cookies.id
         if (!admin_id) {
             return res.status(400).json({
                 msg: "Please login again"
@@ -169,7 +171,7 @@ const addInvestor = async (req, res) => {
             website,
             linkedIn,
             likes,
-            // admin_id,
+            admin_id,
             images: uploadedImages,
             logo: CompanyLogo // Save the company logo URL
         });
@@ -490,11 +492,44 @@ const suggestInvestors = async (req, res) => {
     }
 };
 
+const getInvestorFromAdminId= async(req,res)=>{
+    try {
+        const {
+            admin_id
+        }=req.params
+
+        result = await Investor.findOne({
+            "admin_id":admin_id
+        })
+        if(! result){
+            console.log('not found')
+            return res.status(404).json({
+                message: "No Investor Register",
+            });
+
+        }
+        else{
+            return res.status(200).json({
+                result
+            })
+        }
+
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            message: "Internal Server Error",
+            error: error.message
+        });
+    }
+}
+
+
 module.exports = {
     addInvestor,
     updateInvestor,
     getAllInvestors,
     getInvestorById,
     searchInvestors,
-    suggestInvestors
+    suggestInvestors,
+    getInvestorFromAdminId
 }

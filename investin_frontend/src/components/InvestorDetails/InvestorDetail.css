@@ -1,159 +1,63 @@
-/* General Styles */
-body {
-    background-color: #f7f9fc;
-    color: #333;
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Container */
-  .investor-detail-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px;
-    background-color: #f7f9fc;
-  }
-  
-  /* Header Section */
-  header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  
-  header .text-4xl {
-    font-size: 3rem;
-    color: #333;
-  }
-  
-  header .text-gray-600 {
-    font-size: 1rem;
-    color: #666;
-  }
-  
-  /* Info Section */
-  .info-section, .key-people-section, .companies-invested-section, .images-section {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-    width: 100%;
-  }
-  
-  .info-section h2, .key-people-section h2, .companies-invested-section h2, .images-section h2 {
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-  }
-  
-  .info-section p, .key-people-section p, .companies-invested-section p {
-    margin-bottom: 10px;
-  }
-  
-  .info-section p span, .key-people-section p span, .companies-invested-section p span {
-    font-weight: 600;
-  }
-  
-  /* Key People Section */
-  .key-people-section .flex {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .key-people-section img {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    margin-right: 20px;
-  }
-  
-  .key-people-section h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-  }
-  
-  .key-people-section .text-gray-600 {
-    color: #666;
-  }
-  
-  /* Companies Invested Section */
-  .companies-invested-section .flex {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .companies-invested-section img {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    margin-right: 20px;
-  }
-  
-  .companies-invested-section h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-  }
-  
-  .companies-invested-section .text-gray-600 {
-    color: #666;
-  }
-  
-  /* Carousel Section */
-  .custom-carousel {
-    max-width: 50vw;
-  
-    margin: 0 auto;
-  }
-  
-  .custom-carousel .carousel-image {
-    max-height: 300px;
-    object-fit: cover;
-  }
-  
-  .carousel-image {
-    cursor: pointer;
-  }
-  
-  /* Modal Styles */
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .modal-content {
-    background: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    position: relative;
-    max-width: 90%;
-    max-height: 90%;
-  }
-  
-  .modal-image {
-    max-width: 100%;
-    max-height: 80vh;
-    object-fit: contain;
-  }
-  
-  .modal-close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #333;
-  }
-  
+.bar-graph-section {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.bar-graph-section canvas {
+  display: block;
+  max-width: 100%;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.modal-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.custom-carousel {
+  width: 80%; /* Adjust this value to change the width */
+  max-width: 400px; /* Set a max-width to control the maximum size */
+  margin: 0 auto; /* Center the carousel */
+}
+
+.custom-carousel .carousel .slide img {
+  max-width: 100%; /* Ensure image doesn't exceed container width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.custom-carousel .carousel .thumbs-wrapper {
+  display: none; /* Hide thumbnails if not needed */
+}
+
+.custom-carousel .carousel .control-arrow {
+  background-color: rgba(0, 0, 0, 0.5); /* Customize arrow color */
+  border-radius: 50%;
+  padding: 5px;
+}

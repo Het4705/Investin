@@ -8,8 +8,8 @@ import "chart.js/auto";
 import "./StartupDetails.css";
 import loader from "../../assets/biglogo.png";
 
-const StartupDisplay = () => {
-  const { startupId } = useParams();
+const StartupDisplay = ({startupId}) => {
+  
   const [startup, setStartup] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -120,10 +120,10 @@ const StartupDisplay = () => {
           )}
         </div>
         <div className="info-item">
-          <h2>Shareholder Pattern</h2>
-          <div className="chart-container">
-            <Pie data={shareholderData} />
-            {startup.shareholderPattern && startup.shareholderPattern.length > 0 ? (
+  <h2>Shareholder Pattern</h2>
+  <div className="chart-container">
+    <Pie data={shareholderData} />
+    {startup.shareholderPattern && startup.shareholderPattern.length > 0 ? (
       <table className="shareholder-table">
         <thead>
           <tr>
@@ -143,8 +143,9 @@ const StartupDisplay = () => {
     ) : (
       <p>100% owned by company</p>
     )}
-          </div>
-        </div>
+  </div>
+</div>
+
         <div className="info-item">
           <h2>Clients</h2>
           {startup.clients && startup.clients.length > 0 ? (
@@ -173,7 +174,7 @@ const StartupDisplay = () => {
             <strong>Equity Offered:</strong> {startup.equityOffered}%
           </p>
           <p>
-            <strong>Valuation:</strong> ${startup.valuation.toLocaleString()}
+            <strong>Valuation:</strong> ${startup.valuation}
           </p>
           <p>
             <strong>Contact:</strong> {startup.contact}

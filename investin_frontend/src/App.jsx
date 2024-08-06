@@ -15,6 +15,9 @@ import PageNotFound from './pages/PageNotFound/PageNotFound';
 import StartupDashboard from './components/StartupDashboard/StartupDashboard';
 import AddStartup2 from './pages/AddStartup/AddStartup2';
 import AllStartups from './pages/AllStartups/AllStartup';
+import Partnership from './pages/Partnership/Partnership';
+import InvestorDashboard from './components/InvestorDashboard/InvestorDashboard';
+import AddInvestor from './pages/AddInvestor/AddInvestor';
 
 function App() {
   const [role, setRole] = useState(Cookies.get("role"));
@@ -47,7 +50,25 @@ function App() {
             </>
           ) : (
             <Route path='*' element={<Navigate to='/home' />} />
-          )}
+            )}
+
+          {isLogin && role === "investor" ? (
+            <>
+            <Route path='/investorDashboard' element={<InvestorDashboard />} />
+            <Route path='/addInvestor' element={<AddInvestor />} />
+            </>
+          ) : (
+            <Route path='*' element={<Navigate to='/home' />} />
+            )}
+          {
+            isLogin ?(<>
+             <Route path="/partnerships" element={<Partnership/>}></Route>
+
+            </>):(<>
+              <Route path='*' element={<Navigate to='/login' />} />
+            
+            </>)
+          }
 
           {isLogin ? (
             <>
